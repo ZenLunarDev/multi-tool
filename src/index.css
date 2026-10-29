@@ -1,43 +1,65 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0a0b0f;
-  --color-panel: #111318;
-  --color-card: #161922;
-  --color-border: #232733;
-  --color-hover: #1c2029;
-  --color-accent: #6366f1;
-  --color-accent-soft: #6366f11a;
-  --color-text: #e6e8ee;
-  --color-muted: #8b90a0;
-  --color-dim: #5a5f70;
+  --color-bg: #f6f8fb;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f9fafc;
+  --color-border: #eef0f4;
+  --color-border-strong: #e2e6ee;
+
+  --color-ink: #0f172a;
+  --color-ink-muted: #64748b;
+  --color-ink-dim: #94a3b8;
+
+  --color-accent: #22c9c0;
+  --color-accent-hover: #1bb0a8;
+  --color-accent-soft: #22c9c015;
+
+  --color-pink: #fb7185;
+  --color-pink-soft: #fb718515;
+  --color-slate: #64748b;
+
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+
+  --radius-card: 1.25rem;
+  --shadow-card: 0 1px 2px #0f172a08, 0 8px 24px -12px #0f172a10;
+  --shadow-lift: 0 4px 6px #0f172a08, 0 20px 40px -16px #0f172a18;
+
+  --font-sans: "KoHo", "Inter", system-ui, sans-serif;
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white bg-accent transition-all duration-150 ease-out hover:bg-indigo-500 hover:shadow-lg hover:shadow-indigo-500/25 active:scale-[0.97] disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold text-sm text-white bg-accent transition-all duration-200 hover:bg-accent-hover hover:-translate-y-px hover:shadow-[var(--shadow-lift)] active:translate-y-0 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
   }
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-muted transition-all duration-150 ease-out hover:text-text hover:bg-hover active:scale-[0.97];
-  }
-  .card {
-    @apply rounded-xl bg-card border border-border p-6 transition-colors duration-150 hover:border-muted;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full font-semibold text-sm text-ink bg-surface border border-border-strong transition-all duration-200 hover:bg-surface-alt hover:-translate-y-px active:translate-y-0 active:scale-[0.98];
   }
   .input {
-    @apply w-full rounded-lg bg-panel border border-border px-3 py-2.5 text-sm font-medium text-text placeholder:text-dim placeholder:font-normal transition-colors duration-150 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent;
+    @apply w-full px-4 py-3 rounded-2xl text-sm text-ink bg-surface-alt border border-border transition-all duration-200 focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent-soft placeholder:text-ink-dim;
+  }
+  .card {
+    @apply bg-surface rounded-[var(--radius-card)] border border-border shadow-[var(--shadow-card)] transition-all duration-300;
+  }
+  .pill {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-accent-soft text-accent;
   }
 }
 
 html, body, #root {
   height: 100%;
   margin: 0;
-  background: #0a0b0f;
-  color: #e6e8ee;
-  font-family: 'Inter', system-ui, sans-serif;
-  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  background: #f6f8fb;
+  color: #0f172a;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
 .tabular { font-variant-numeric: tabular-nums; }
-
-h1, h2, h3 { letter-spacing: -0.02em; font-weight: 600; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
